@@ -9,7 +9,7 @@ describe('Dialog', ()=>{
 
     });
 
-    it.skip('Verify that the text entry dialog username & password fields are editable', async ()=>{
+    it.skip('TC-001 | Verify that the text entry dialog username & password fields are editable', async ()=>{
         await (await (dialog.appBtn)).click();
         await (await (dialog.alertDialogBtn)).click();
         await (await (dialog.textEntryDialogBtn)).click();
@@ -27,16 +27,16 @@ describe('Dialog', ()=>{
 
     });
 
-    it('Verify that the app adjust when orientation is switched', async () => {
+    it('TC-002 | Verify that the app adjust when orientation is switched', async () => {
         console.log(driver.getOrientation());
-        driver.setOrientation('LANDSCAPE');
+        await driver.setOrientation('landscape');
 
-        driver.saveScreenshot('./screenshots/landscape.png');
+        await driver.saveScreenshot('./screenshots/landscape.png');
         await (await ( dialog.appBtn)).click();
 
-        driver.setOrientation('PORTRAIT');
-        driver.back();
-        driver.saveScreenshot('./screenshots/portrait.png');
+        await driver.setOrientation('portrait');
+        await driver.back();
+        await driver.saveScreenshot('./screenshots/portrait.png');
     });
 
     // it('Verify isSelected, isEnabled & isDisplayed', async () => {
