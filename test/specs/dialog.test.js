@@ -39,7 +39,7 @@ describe('Dialog', ()=>{
         await driver.saveScreenshot('./screenshots/portrait.png');
     });
 
-    it.only('TC-003 | Verify isSelected, isEnabled & isDisplayed', async () => {
+    it('TC-003 | Verify isSelected, isEnabled & isDisplayed', async () => {
         await (await (dialog.viewBtn)).click();
         driver.touchAction([
             { action: 'press', x: 500, y: 1600 },
@@ -56,24 +56,43 @@ describe('Dialog', ()=>{
         await (await (dialog.tabsBtn)).click();
         await (await (dialog.contentByIdBtn)).click();
 
-        // let isEnabled, isSelected, isDisplayed;
+        let isEnabled, isSelected, isDisplayed;
 
-        // for(i=0; i<3; i++){
-        //     isEnabled = await (await (dialog.tabs[i])).isEnabled();
-        //     isSelected = await (await (dialog.tabs[i])).isSelected();
-        //     isDisplayed = await (await (dialog.tabs[i])).isDisplayed();
+        for(i=0; i<3; i++){
+            isEnabled = await (await (dialog.tabs[i])).isEnabled();
+            isSelected = await (await (dialog.tabs[i])).isSelected();
+            isDisplayed = await (await (dialog.tabs[i])).isDisplayed();
 
-        //     console.log(`Tab ${i+1}`)
-        //     console.log('isEnabled:', isEnabled);
-        //     console.log('isSelected:', isSelected);
-        //     console.log('isDisplayed:', isDisplayed);
+            console.log(`Tab ${i+1}`)
+            console.log('isEnabled:', isEnabled);
+            console.log('isSelected:', isSelected);
+            console.log('isDisplayed:', isDisplayed);
 
-        //     if(isEnabled && isSelected){
-        //         console.log("Tab Details 1:", await (await (dialog.tab1Details)).isDisplayed());
-        //         console.log("Tab Details 2:", await (await (dialog.tab2Details)).isDisplayed());
-        //         console.log("Tab Details 3:", await (await (dialog.tab3Details)).isDisplayed());
-        //     }
-        // }
+            if(isEnabled && isSelected){
+                console.log("Tab Details 1:", await (await (dialog.tab1Details)).isDisplayed());
+                console.log("Tab Details 2:", await (await (dialog.tab2Details)).isDisplayed());
+                console.log("Tab Details 3:", await (await (dialog.tab3Details)).isDisplayed());
+            }
+        }
+    });
+
+    it.only('Verify the repeat alarm options has attribute checked set to true when selected', async ()=>{
+        let isChecked, text;
+
+        await (await (dialog.appBtn)).click();
+        await (await (dialog.alertDialogBtn)).click();
+        await (await (dialog.repeatAlarmBtn)).click();
+
+        text = await (await dialog._weekdayCheckbox(0)).getText();
+        expect(text).equal('Every Monday');
+
+        isChecked = await (await dialog._weekdayCheckbox(0)).getAttribute('checked');
+        expect(isChecked).equal('false');
+
+        await (await dialog._weekdayCheckbox(0)).click();
+
+        isChecked = await (await dialog._weekdayCheckbox(0)).getAttribute('checked');
+        expect(isChecked).equal('true');
     });
 
         // Execute a block of code after every test
