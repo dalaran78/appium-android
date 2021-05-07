@@ -9,7 +9,7 @@ describe('Dialog', ()=>{
 
     });
 
-    it.skip('TC-001 | Verify that the text entry dialog username & password fields are editable', async ()=>{
+    it('TC-001 | Verify that the text entry dialog username & password fields are editable', async ()=>{
         await (await (dialog.appBtn)).click();
         await (await (dialog.alertDialogBtn)).click();
         await (await (dialog.textEntryDialogBtn)).click();
@@ -39,42 +39,42 @@ describe('Dialog', ()=>{
         await driver.saveScreenshot('./screenshots/portrait.png');
     });
 
-    // it('Verify isSelected, isEnabled & isDisplayed', async () => {
-    //     await (await (dialog.viewBtn)).click();
-    //     driver.touchAction([
-    //         { action: 'press', x: 500, y: 1400 },
-    //         { action: 'moveTo', x: 500, y: 300 },
-    //         'release',
-    //         { action: 'press', x: 500, y: 1400 },
-    //         { action: 'moveTo', x: 500, y: 300 },
-    //         'release',
-    //         { action: 'press', x: 500, y: 1400 },
-    //         { action: 'moveTo', x: 500, y: 300 },
-    //         'release'
-    //     ])
+    it.only('TC-003 | Verify isSelected, isEnabled & isDisplayed', async () => {
+        await (await (dialog.viewBtn)).click();
+        driver.touchAction([
+            { action: 'press', x: 500, y: 1600 },
+            { action: 'moveTo', x: 500, y: 300 },
+            'release',
+            { action: 'press', x: 500, y: 1600 },
+            { action: 'moveTo', x: 500, y: 300 },
+            'release',
+            { action: 'press', x: 500, y: 1600 },
+            { action: 'moveTo', x: 500, y: 300 },
+            'release'
+        ]);
 
-    //     await (await (dialog.tabsBtn)).click();
-    //     await (await (dialog.contentByIdBtn)).click();
+        await (await (dialog.tabsBtn)).click();
+        await (await (dialog.contentByIdBtn)).click();
 
-    //     let isEnabled, isSelected, isDisplayed;
+        // let isEnabled, isSelected, isDisplayed;
 
-    //     for(i=0; i<3; i++){
-    //         isEnabled = dialog.tabs[i].isEnabled();
-    //         isSelected = dialog.tabs[i].isSelected();
-    //         isDisplayed = dialog.tabs[i].isDisplayed();
+        // for(i=0; i<3; i++){
+        //     isEnabled = await (await (dialog.tabs[i])).isEnabled();
+        //     isSelected = await (await (dialog.tabs[i])).isSelected();
+        //     isDisplayed = await (await (dialog.tabs[i])).isDisplayed();
 
-    //         console.log(`Tab ${i+1}`)
-    //         console.log('isEnabled:', isEnabled);
-    //         console.log('isSelected:', isSelected);
-    //         console.log('isDisplayed:', isDisplayed);
+        //     console.log(`Tab ${i+1}`)
+        //     console.log('isEnabled:', isEnabled);
+        //     console.log('isSelected:', isSelected);
+        //     console.log('isDisplayed:', isDisplayed);
 
-    //         if(isEnabled && isSelected){
-    //             console.log("Tab Details 1:", await (await (dialog.tab1Details)).isDisplayed());
-    //             console.log("Tab Details 2:", await (await (dialog.tab2Details)).isDisplayed());
-    //             console.log("Tab Details 3:", await (await (dialog.tab3Details)).isDisplayed());
-    //         }
+        //     if(isEnabled && isSelected){
+        //         console.log("Tab Details 1:", await (await (dialog.tab1Details)).isDisplayed());
+        //         console.log("Tab Details 2:", await (await (dialog.tab2Details)).isDisplayed());
+        //         console.log("Tab Details 3:", await (await (dialog.tab3Details)).isDisplayed());
+        //     }
         // }
-    // });
+    });
 
         // Execute a block of code after every test
         afterEach(() => {
