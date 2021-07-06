@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "keywords": [],
-  "author": "Sergei Svistelnikov",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "@wdio/cli": "^7.5.3",
